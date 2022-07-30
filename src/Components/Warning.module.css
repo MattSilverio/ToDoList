@@ -1,0 +1,12 @@
+.warning{
+    text-align: center;
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 140%;
+
+    color: var(--gray-300);
+}
+
+.warning p{
+    font-weight: 400;
+}

@@ -1,0 +1,139 @@
+.header{
+    height: 12.5rem;
+    background: var(--gray-700);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    
+}
+
+.taskForm{    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    position: absolute;
+    left: calc(50% - 46rem/2);
+    top: 10.8125rem;
+    
+}
+
+.taskForm input{
+    width: 46rem;
+    height: 3.375rem;
+    background: var(--gray-500);
+    border: 1px solid var(--gray-700);
+    border-radius: 8px;
+    padding: 16px;
+    color: var(--gray-100);
+}
+
+.taskForm button{
+    padding: 16px;
+    width: 5.625rem;
+    height: 3.25rem;
+    color: var(--gray-100);
+    cursor: pointer;
+    background: var(--blue-dark);
+    text-align: center;
+    border-radius: 8px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.tasks{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    position: absolute;
+    width: 46rem;
+    left: calc(50% - 46rem/2);
+    top: 18.2rem;
+}
+
+.tasksTracks{
+    width: 46rem;
+    height: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.createdTasksLabel{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+
+    color: var(--blue);
+}
+
+.completedTasksLabel{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+
+    color: var(--purple);
+}
+
+.tasksTrackingCounters {
+    color: var(--gray-200);
+    line-height: 15px;
+    padding: 2px 8px;
+    width: 25px;
+    height: 19px;
+
+    background:  var(--gray-400);
+    border-radius: 999px;
+}
+
+.tasksBoard {
+    width: 46rem;
+    height: 15.25rem;
+    border-top: 1px solid var(--gray-400);
+    border-radius: 8px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    /* align-items: center;
+    justify-content: center; */
+}
+
+.task{
+    display: flex;
+    padding: 16px;
+    gap: .75rem;
+
+    width: 100%;
+    background: var(--gray-500);
+    border: 1px solid var(--gray-400);
+    border-radius: 8px;
+    box-shadow: 0px 2px 8px rgba(0,0,0,0.6);
+}
+
+.task svg{
+    cursor: pointer;
+}
+
+.task p{
+    width: 39.5rem;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 140%; 
+}
