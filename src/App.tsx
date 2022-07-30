@@ -1,10 +1,47 @@
-import { useState } from 'react'
+
 import './global.css'
 import styles from "./App.module.css"
-import Logo from './assets/logo.svg'
-import { CheckCircle, Circle, Clipboard, PlusCircle, Trash } from 'phosphor-react'
-import Warning from './Components/Warning'
 
+import Logo from './assets/logo.svg'
+
+
+import {  PlusCircle } from 'phosphor-react'
+import Warning from './Components/Warning'
+import { Task } from './Components/Task'
+
+interface ObjectTask{
+  id: number;
+  content: string;
+  isDone: boolean;
+}
+
+const myTasks: Array<ObjectTask> = [
+  {
+    id: 0,
+    content: "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.",
+    isDone: false,
+  },
+  {
+    id: 1,
+    content: "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.",
+    isDone: false,
+  },
+  {
+    id: 2,
+    content: "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.",
+    isDone: false,
+  },
+  {
+    id: 3,
+    content: "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.",
+    isDone: true,
+  },
+  {
+    id: 4,
+    content: "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.",
+    isDone: true,
+  },
+]
 
 function App() {
   
@@ -35,36 +72,14 @@ function App() {
         </div>
 
         <div className={styles.tasksBoard}>
-          {/* <Warning /> */}
-          <div className={styles.task}>
-            <Circle size={17.45} />
-            <p>Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer</p>
-            <Trash size={24}/>
-          </div>
+          
+          {myTasks.length > 0 && myTasks.map((task) => {
+            return <Task key={task.id} isDone={task.isDone} content={task.content}/>
+          })
+            || 
 
-          <div className={styles.task}>
-            <Circle size={17.45} />
-            <p>Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer</p>
-            <Trash size={24}/>
-          </div>
-
-          <div className={styles.task}>
-            <Circle size={17.45} />
-            <p>Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer</p>
-            <Trash size={24}/>
-          </div>
-
-          <div className={styles.task}>
-            <CheckCircle size={17.45} />
-            <p>Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer</p>
-            <Trash size={24}/>
-          </div>
-
-          <div className={styles.task}>
-            <CheckCircle size={17.45} />
-            <p>Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer</p>
-            <Trash size={24}/>
-          </div>
+            <Warning />
+          }
 
         </div>
       </div>
