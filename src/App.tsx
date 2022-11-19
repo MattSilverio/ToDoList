@@ -60,7 +60,7 @@ function App() {
   }
 
   function addTask(tasks: Array<ObjectTask>){
-    const taskDescription = document.getElementById('taskInput')?.value;
+    const taskDescription = (document.getElementById('taskInput') as HTMLInputElement).value.toString();
 
     let objNewTask: ObjectTask = {
       id: tasks.length,
@@ -106,7 +106,7 @@ function App() {
         <div className={styles.tasksBoard}>
           
           {totalTasks.length > 0 && totalTasks.map((task) => {
-            return <Task key={task.id} propsisDone={task.isDone} content={task.content} id={task.id} setTotalTasks={setTotalTasks} totalTasks={totalTasks} setTasksDone={setTasksDone}/>
+            return <Task key={task.id} isDone={task.isDone} content={task.content!} id={task.id} setTotalTasks={setTotalTasks} totalTasks={totalTasks} setTasksDone={setTasksDone}/>
           })
             || 
 
