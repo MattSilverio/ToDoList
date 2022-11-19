@@ -8,10 +8,11 @@ import Logo from './assets/logo.svg'
 import {  PlusCircle } from 'phosphor-react'
 import Warning from './Components/Warning'
 import { Task } from './Components/Task'
+import {ReactNode, useEffect, useState } from 'react'
 
-interface ObjectTask{
+export interface ObjectTask{
   id: number;
-  content: string;
+  content?: string;
   isDone: boolean;
 }
 
@@ -43,8 +44,39 @@ const myTasks: Array<ObjectTask> = [
   },
 ]
 
+export function getNumOfTasksDone(tasks: Array<ObjectTask>){
+  const numOfTasksDone = tasks.filter((item) => item.isDone).length
+  return numOfTasksDone;
+}
+
 function App() {
-  
+  const [tasksCreated, setTasksCreated] = useState<ReactNode>();
+  const [tasksDone, setTasksDone] = useState<ReactNode>();
+  const [totalTasks, setTotalTasks] = useState(myTasks)
+
+  function getNumOfTasksCreated(tasks:Array<ObjectTask>){
+    let numOfTasks = tasks.length
+    return numOfTasks;
+  }
+
+  function addTask(tasks: Array<ObjectTask>){
+    const taskDescription = document.getElementById('taskInput')?.value;
+
+    let objNewTask: ObjectTask = {
+      id: tasks.length,
+      content: taskDescription,
+      isDone: false
+    }
+    
+    setTotalTasks(tasks => [...tasks, objNewTask])
+    
+    console.log(totalTasks)
+  }
+
+  useEffect(() => {
+    setTasksCreated(getNumOfTasksCreated(totalTasks));
+    setTasksDone(getNumOfTasksDone(totalTasks));
+  }, [totalTasks.length, tasksDone])
 
   return (
     <div>
@@ -53,9 +85,9 @@ function App() {
       </header>
 
       <div className={styles.taskForm}>
-        <input type="text" placeholder="Adicione uma nova tarefa" />
+        <input id='taskInput' type="text" placeholder="Adicione uma nova tarefa" />
 
-        <button>
+        <button onClick={() => addTask(totalTasks)}>
           Criar <PlusCircle size={16} />
         </button>
       </div>
@@ -63,18 +95,18 @@ function App() {
       <div className={styles.tasks}>
         <div className={styles.tasksTracks}>
           <p className={styles.createdTasksLabel}>
-            Tarefas Criadas<span className={styles.tasksTrackingCounters}>0</span>
+            Tarefas Criadas<span className={styles.tasksTrackingCounters}>{tasksCreated}</span>
           </p>
 
           <p className={styles.completedTasksLabel}>
-            Concluídas <span className={styles.tasksTrackingCounters}>0</span>
+            Concluídas <span className={styles.tasksTrackingCounters}>{tasksDone}</span>
           </p>
         </div>
 
         <div className={styles.tasksBoard}>
           
-          {myTasks.length > 0 && myTasks.map((task) => {
-            return <Task key={task.id} isDone={task.isDone} content={task.content}/>
+          {totalTasks.length > 0 && totalTasks.map((task) => {
+            return <Task key={task.id} propsisDone={task.isDone} content={task.content} id={task.id} setTotalTasks={setTotalTasks} totalTasks={totalTasks} setTasksDone={setTasksDone}/>
           })
             || 
 
